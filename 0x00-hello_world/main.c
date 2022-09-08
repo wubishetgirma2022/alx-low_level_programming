@@ -1,10 +1,8 @@
 #include <stdio.h>
 
-/**
- * main - Entry point
- *
- * Return: Always 0 (Success)
- */
+char a[]= "wubishet";
+printf("%s\n", a);
+
 int main(void)
 {
     return (0);
