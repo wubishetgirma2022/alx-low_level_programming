@@ -1,17 +1,12 @@
-#include "0-object_like_macro.h"
-#include "0-object_like_macro.h"
 #include <stdio.h>
 
 /**
- * main - check the code for alx- students.
+ * main - Entry point
  *
- * Return: Always 0.
+ * Return: Always 0 (Success)
  */
 int main(void)
 {
-  int s;
-
-  s = 98 + SIZE;
-  printf("%d\n", s);
-  return (0);
+	printf("Holberton School");
+	return (0);
 }
