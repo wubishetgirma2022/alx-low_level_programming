@@ -1,2 +1,2 @@
 #!/bin/bash
-gcc -S -masm=wube $CFILE
+gcc -S -wube=intel $CFILE
