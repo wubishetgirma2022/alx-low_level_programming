@@ -1,18 +1,13 @@
 #include "main.h"
 
+
 /**
- * _isupper - checks if parameter is an uppercase character.
- * @c: input character.
- * Return: 1 if is an uppercase character, 0 in other case.
+ * mul - a function that multiplies two integers.
+ * @a: An input integer
+ * @b: An input integer
+ * Return: Always 0
  */
-int _isupper(int c)
+int mul(int a, int b)
 {
-	if (c >= 65 && c <= 90)
-	{
-		return (1);
-	}
-	else
-	{
-		return (0);
-	}
+	return (a * b);
 }
