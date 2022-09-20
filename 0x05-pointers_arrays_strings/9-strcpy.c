@@ -1,18 +1,23 @@
 #include "main.h"
 #include <stdio.h>
-
 /**
- * main - check the code
- *
- * Return: Always 0.
+ * _strcpy - copies the string pointed to by src,
+ * including the terminating null byte, to the
+ * buffer pointed to by dest.
+ * @dest: destination.
+ * @src: source.
+ * Return: the pointer to dest.
  */
-int main(void)
+char *_strcpy(char *dest, char *src)
 {
-  char s1[98];
-  char *p;
+	int count = 0;
 
-  p = _strcpy(s1, "First, solve the problem. Then, write the code\n");
-  printf("%s", s1);
-  printf("%s", p);
-  return (0);
+	while (count >= 0)
+	{
+		*(dest + count) = *(src + count);
+		if (*(src + count) == '\0')
+			break;
+		count++;
+	}
+	return (dest);
 }
