@@ -2,66 +2,42 @@
 #include <stdlib.h>
 
 /**
- * ch_free_grid - frees a 2 dimensional array.
- * @grid: multidimensional array of char.
+ * alloc_grid - returns a pointer to a 2 dimensional array of integers.
+ * @width: width of the array.
  * @height: height of the array.
- *
- * Return: no return
- */
-void ch_free_grid(char **grid, unsigned int height)
-{
-	if (grid != NULL && height != 0)
-	{
-		for (; height > 0; height--)
-			free(grid[height]);
-		free(grid[height]);
-		free(grid);
-	}
-}
-
-/**
- * strtow - splits a string into words.
- * @str: string.
  *
  * Return: pointer of an array of integers
  */
-char **strtow(char *str)
+int **alloc_grid(int width, int height)
 {
-	char **aout;
-	unsigned int c, height, i, j, a1;
+	int **gridout;
+	int i, j;
 
-	if (str == NULL || *str == '\0')
+	if (width < 1 || height < 1)
 		return (NULL);
-	for (c = height = 0; str[c] != '\0'; c++)
-		if (str[c] != ' ' && (str[c + 1] == ' ' || str[c + 1] == '\0'))
-			height++;
-	aout = malloc((height + 1) * sizeof(char *));
-	if (aout == NULL || height == 0)
+
+	gridout = malloc(height * sizeof(int *));
+	if (gridout == NULL)
 	{
-		free(aout);
+		free(gridout);
 		return (NULL);
 	}
-	for (i = a1 = 0; i < height; i++)
+
+	for (i = 0; i < height; i++)
 	{
-		for (c = a1; str[c] != '\0'; c++)
+		gridout[i] = malloc(width * sizeof(int));
+		if (gridout[i] == NULL)
 		{
-			if (str[c] == ' ')
-				a1++;
-			if (str[c] != ' ' && (str[c + 1] == ' ' || str[c + 1] == '\0'))
-			{
-				aout[i] = malloc((c - a1 + 2) * sizeof(char));
-				if (aout[i] == NULL)
-				{
-					ch_free_grid(aout, i);
-					return (NULL);
-				}
-				break;
-			}
+			for (i--; i >= 0; i--)
+				free(gridout[i]);
+			free(gridout);
+			return (NULL);
 		}
-		for (j = 0; a1 <= c; a1++, j++)
-			aout[i][j] = str[a1];
-		aout[i][j] = '\0';
 	}
-	aout[i] = NULL;
-	return (aout);
+
+	for (i = 0; i < height; i++)
+		for (j = 0; j < width; j++)
+			gridout[i][j] = 0;
+
+	return (gridout);
 }
